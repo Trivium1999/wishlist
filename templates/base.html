@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>    
+  <title> {{title}} </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">        
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="page">
+    <div class="header">
+      <div class="header_text">{{heading}}</div>
+    </div>
+    <ul class="mainmenu">
+      {% block mainmenu %}
+          {% for m in menu %}
+            {% if not forloop.last %}
+              <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+            {% else %}
+              <li class="last"><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+              {% endif %}
+          {% endfor %}
+          {% endblock mainmenu %}
+      </ul>
+    <div class="content">Основное содержимое</div>
+
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div class="footer">
+    <p>© {{ 2024 }} Copyright <span style="color:rgb(255, 196, 0)">Wish</span>list</p>
+    <p></p>
+  </div>
+</div>
+</body>
+</html>
