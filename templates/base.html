@@ -1,4 +1,5 @@
 {% load static %}
+{% load my_custom_tags %}
 <!DOCTYPE html>
 <html>
 <head>    
@@ -24,11 +25,12 @@
           {% endfor %}
           {% endblock mainmenu %}
       </ul>
-    <div class="content">Основное содержимое</div>
-
-    {% block content %}
-    {% endblock %}
-  </div>
+      <div class="content">   
+      
+      {% block content %}
+      {% endblock %}
+      </div>
+      </div>
   <div class="footer">
     <p>© {{ 2024 }} Copyright <span style="color:rgb(255, 196, 0)">Wish</span>list</p>
     <p></p>

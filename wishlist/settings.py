@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'list.apps.ListConfig',
     'core.apps.CoreConfig',
+    # 'templatetags',
     # 'users.apps.UsersConfig',
     # 'django.contrib.staticfiles'
 ]

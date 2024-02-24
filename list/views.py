@@ -13,13 +13,13 @@ menu = [
 
 
 def index(request):
-    wishes = Wish.objects.all()
+    # wishes = Wish.objects.all()
     # users = Contact.objects.all()
     context = {
         'menu': menu,
         'title': 'Главная страница',
         # 'users': users,
-        'wishes': wishes,
+        # 'wishes': wishes,
         'heading': 'Список Желаний'
     }
     return render(request, 'list/index.html', context)

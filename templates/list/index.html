@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
+{% load my_custom_tags %}
+
 {% block content %}
+{% get_wishes as wishes %}
 
 <ul>
-    {% for w in users %}
+    {% for w in wishes %}
+    {% if w.image %}
+      <p><img class="img-article-left thumb" src="{{w.image.url}}"></p>
+    {% else %}
+      <p><img class="img-article-left thumb" src="static/img/image_not_image.png/"></p>
+    {% endif %}
       <li>
-        <h2>{{w.name}}</h2>
+        <p>{{w.title}}</p>
+      </li>
+      <li type="None">
+        <p>{{w.author}}</p>
       </li>
     {% endfor %}
 </ul>

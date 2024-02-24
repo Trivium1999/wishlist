@@ -10,7 +10,7 @@ class Wish(models.Model):
         on_delete=models.CASCADE,
         )
     title = models.CharField('Загаловок', blank=False, max_length=150)
-    image = models.ImageField('Фото', upload_to='image/')
+    image = models.ImageField('Фото', upload_to='image/', blank=True)
     description = models.TextField('Описание', blank=False)
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     gift = models.BooleanField(default=False)
