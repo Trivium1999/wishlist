@@ -66,3 +66,7 @@ ul.mainmenu li {
     font-family: Comic Sans MS, Geneva, Arial, Helvetica, sans-serif;
     text-align: center;
 }
+
+.details {
+    list-style-type: None;
+}

@@ -1,13 +1,14 @@
 from django.urls import path
-from list.views import index, person, about, users, login, details
+from list.views import WishIndex, DetailWish, CreateWish, person, about, login
 
+app_name = 'list'
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('about/', about, name='about'),
-    path('person/<slug:person_id>/', person, name='person'),
-    path('users/', users, name='users'),
+    path('', WishIndex.as_view(), name='index'), # отображаются пользователи, с фото и именами
+    path('about/', about, name='about'), # о проекте
+    path('person/<slug:person_id>/', person, name='person'),  # страница пользователя со списком подарков
+    # path('users/', users, name='users'), # все пользователи, с фото и именами
     path('login/', login, name='login'),
-    # path('create/', create),
-    path('details/<int:wish_pk>/', details, name='details')
+    path('create/', CreateWish.as_view(), name='create'),
+    path('details/<slug:wish_slug>/', DetailWish.as_view(), name='details_wish') # подробная информация о подарке
 ]

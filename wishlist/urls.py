@@ -5,16 +5,16 @@ from wishlist import settings
 # from  import page_not_found
 
 
-handler404 = 'core.views.page_not_found'
-handler500 = 'core.views.server_error'
-handler403 = 'core.views.permission_denied'
+# handler404 = 'core.views.page_not_found'
+# handler500 = 'core.views.server_error'
+# handler403 = 'core.views.permission_denied'
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('auth/', include('users.urls', namespace='users')),
     # path('auth/', include('django.contrib.auth.urls')),
-    path('', include('list.urls'), name='list'),
+    path('', include(('list.urls', 'wishlist'), namespace='wishlist')),
 ]
 
 

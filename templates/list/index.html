@@ -12,7 +12,9 @@
       <p><img class="img-article-left thumb" src="static/img/image_not_image.png/"></p>
     {% endif %}
       <li>
-        <p>{{w.title}}</p>
+        <p>
+          <a href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
+        </p>
       </li>
       <li type="None">
         <p>{{w.author}}</p>

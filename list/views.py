@@ -1,52 +1,78 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerError
-# from users.models import Contact
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import CreateWishForm
 from .models import *
-
-menu = [
-    {'title': 'Главная страница', 'url_name': 'index'},
-    {'title': 'О сайте', 'url_name': 'about'},
-    {'title': 'Пользователи', 'url_name': 'users'},
-    # {'title': 'Зарегистрироваться', 'url_name': 'users_signup'},
-    {'title': 'Войти', 'url_name': 'login'}
-]
+from .utils import *
 
 
-def index(request):
-    # wishes = Wish.objects.all()
-    # users = Contact.objects.all()
-    context = {
-        'menu': menu,
-        'title': 'Главная страница',
-        # 'users': users,
-        # 'wishes': wishes,
-        'heading': 'Список Желаний'
-    }
-    return render(request, 'list/index.html', context)
+class WishIndex(DataMixin, ListView):
+    model = Wish
+    template_name = 'list/index.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(
+            title='Главная страница',
+            heading='Список Желаний'
+        )
+        return dict(list(context.items()) + list(c_def.items()))
+    
+    def get_queryset(self):
+        return Wish.objects.filter(gift=False)
 
 
-def details(request, wish_pk):
-    wish = get_object_or_404(Wish, pk=wish_pk)
-    context = {'menu': menu, 'wish': wish}
-    return render(request, 'list/details.html', context)
+class DetailWish(DataMixin, DetailView):
+    model = Wish
+    template_name = 'list/details.html'
+    slug_url_kwarg = 'wish_slug'
+    context_object_name = 'wish'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title=context['wish'])
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class CreateWish(LoginRequiredMixin, DataMixin, CreateView):
+    form_class = CreateWishForm
+    template_name = 'list/create.html'
+    success_url = reverse_lazy('wishlist:index')
+    login_url = reverse_lazy('wishlist:index')
+    raise_exception = True
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(
+            title='Добавить желание',
+            heading='Добавить желание'
+        )
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+
+# def create(request):
+#     if request.method == 'POST':
+#         form = CreateWishForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('wishlist:index')
+#     else:
+#         form = CreateWishForm()
+#     context = {
+#         'menu': menu,
+#         'title': 'Добавить желание',
+#         'heading': 'Добавить желание',
+#         'form': form
+#     }
+#     return render(request, 'list/create.html', context)
 
 
 def about(request):
     context = {'menu': menu, 'title': 'О сайте', 'heading': 'О сайте'}
     return render(request, 'list/about.html', context)
-
-
-def users(request):
-    # # users = Contact.objects.all()
-    # context = {
-    #     # 'users': users,
-    #     'menu': menu,
-    #     'title': 'Пользователи',
-    #     'heading': 'Пользователи'
-    # }
-    # return render(request, 'list/users.html', context)
-    return HttpResponse(f"Пользователи")
-
 
 
 def person(request, person_id):

@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
-<ul>
+
+<h1>{{wish.title}}</h1>
+<ul class="details">
    <li> {{ wish.title }} </li>
+   <hr color="">
       {% if wish.image %}
         <p><img class="img-article-left thumb" src="{{ wish.image.url }}"> </p>
+      {% else %}
+        <p><img class="img-article-left thumb" src="static/img/image_not_image.png/"></p>
       {% endif %}
    <li> {{ wish.description }} </li>
-      
+</ul>
 {% endblock %}
