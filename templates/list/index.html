@@ -3,7 +3,7 @@
 
 {% block content %}
 {% get_wishes as wishes %}
-
+<!-- 
 <ul>
     {% for w in wishes %}
     {% if w.image %}
@@ -20,5 +20,24 @@
         <p>{{w.author}}</p>
       </li>
     {% endfor %}
-</ul>
+</ul> -->
+
+
+<!-- {% get_wishes as wishes %} -->
+
+    {% for w in wishes %}
+    <div class="index_user">
+      <div class="user_card">
+        {% if w.image %}
+          <!-- <a href="#" class="user_image"></a> -->
+          <img class="index_img" src="{{w.image.url}}">
+        {% else %}
+          <img class="index_img" src="static/img/image_not_image.png/">
+        {% endif %}
+      <div class="index_title">
+      <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
+      </div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}

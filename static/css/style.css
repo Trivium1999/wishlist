@@ -8,6 +8,11 @@ html, body {
     background: #f6f7e2;
 }
 
+img {
+    width: 100%;
+    border-radius: 20px;
+}
+
 .wrapper {
     height: 100%;
     max-width: 1100px;
@@ -21,18 +26,19 @@ html, body {
 }
 
 .header {
+    margin-top: 15px;
     max-width: 1124px;
-    height: 250px;
+    height: 120px;
     background: #f8efe0 url("../img/header.jpg") no-repeat center;
     border-radius: 20px 20px 20px 20px;
 }
 
 .header_text {
-    padding-top: 50px;
+    padding-top: 4px;
     padding-left: 20px;
     width: 300px;
     font-family: Comic Sans MS, Tahoma, Arial;
-    font-size: 68px;
+    font-size: 40px;
     color: rgb(233, 208, 139);
     text-shadow: 2px 2px 2px #70511b;
 }
@@ -67,6 +73,66 @@ ul.mainmenu li {
     text-align: center;
 }
 
-.details {
-    list-style-type: None;
+.title_details {
+    margin-left: 50px;
+    margin-bottom: 15px;
+    font-size: 38px;
+    font-family: Comic Sans MS, Tahoma, Arial;
+    color: #70511b;
+    text-shadow: 2px 2px 2px rgb(233, 208, 139);
+}
+
+.wrapper_create_wish {
+    background-color: #f0f1ca;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.create_wish {
+    margin-top: 10px;
+    font-family: Comic Sans MS, Tahoma, Arial;
+
+}
+
+.wrapper_details {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 15px;
+    padding-top: 10px;
+}
+
+.gift_description {
+    margin-left: 15px;
+    font-size: 16px;
+    font-family: Comic Sans MS, Tahoma, Arial;
+}
+
+.user_card {
+    margin: 15px;
+    background-color: #fffd9c;
+    width: 250px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px #fff7aa;
+}
+
+.index_title {
+    text-align: center;
+}
+
+.index_title_btn {
+    background-color: #fffd9c;
+    padding: 3px 3px;
+    text-decoration: None;
+    font-size: 18px;
+    font-family: Comic Sans MS, Tahoma, Arial;
+    color: #70511b;
+    border-radius: 5px;
+}
+
+.index_title_btn:hover {
+    background-color: #fbffc4;
 }
