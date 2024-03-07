@@ -5,7 +5,7 @@
 
 html, body {
     height: 100%;
-    background: #f6f7e2;
+    background:  #f6f7e2;
 }
 
 img {
@@ -73,6 +73,8 @@ ul.mainmenu li {
     text-align: center;
 }
 
+
+
 .title_details {
     margin-left: 50px;
     margin-bottom: 15px;
@@ -94,7 +96,7 @@ ul.mainmenu li {
 .create_wish {
     margin-top: 10px;
     font-family: Comic Sans MS, Tahoma, Arial;
-
+    
 }
 
 .wrapper_details {
@@ -135,4 +137,56 @@ ul.mainmenu li {
 
 .index_title_btn:hover {
     background-color: #fbffc4;
+}
+
+.index_user {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+.list-pages {
+    text-align: center;
+	margin: 0 0 20px 0;
+}
+
+.list-pages ul {
+    margin: 20px 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.list-pages ul li {
+    display: inline-block;
+	margin: 0 20px 0 0;
+}
+
+.list-page a {
+    text-decoration: None;
+}
+
+.list-pages .page-num, .page-num-selected {
+    display: inline-block;
+	width: 60px;
+	height: 44px;
+	border: 1px solid #f5e980;
+	border-radius: 10px;
+    color: #70511b;
+    font-size: 27px;
+    font-family: Comic Sans MS, Geneva, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.list-pages .page-num:hover {
+	box-shadow: 3px 3px 1px #f4f5b3; 
+}
+
+.list-pages .page-num-selected {
+	border: none;
+	color: #70511b;
+	font-size: 27px;
+}
+
+.list-pages .page-num-selected:hover {
+	box-shadow: none; 
 }

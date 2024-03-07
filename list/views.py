@@ -11,6 +11,8 @@ from .utils import *
 class WishIndex(DataMixin, ListView):
     model = Wish
     template_name = 'list/index.html'
+    context_object_name = 'wishes'
+    paginate_by = 6
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

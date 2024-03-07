@@ -2,42 +2,25 @@
 {% load my_custom_tags %}
 
 {% block content %}
-{% get_wishes as wishes %}
-<!-- 
-<ul>
+ <!-- get_wishes as wishes  -->
+
+
+<div class="index_user">
     {% for w in wishes %}
-    {% if w.image %}
-      <p><img class="img-article-left thumb" src="{{w.image.url}}"></p>
-    {% else %}
-      <p><img class="img-article-left thumb" src="static/img/image_not_image.png/"></p>
-    {% endif %}
-      <li>
-        <p>
-          <a href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
-        </p>
-      </li>
-      <li type="None">
-        <p>{{w.author}}</p>
-      </li>
-    {% endfor %}
-</ul> -->
-
-
-<!-- {% get_wishes as wishes %} -->
-
-    {% for w in wishes %}
-    <div class="index_user">
-      <div class="user_card">
-        {% if w.image %}
-          <!-- <a href="#" class="user_image"></a> -->
-          <img class="index_img" src="{{w.image.url}}">
-        {% else %}
-          <img class="index_img" src="static/img/image_not_image.png/">
-        {% endif %}
-      <div class="index_title">
-      <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
+        <div class="user_card">
+          {% if w.image %}
+            <div>
+              <img class="index_img" src="{{w.image.url}}">
+            </div>
+          {% else %}
+            <div>
+              <img class="index_img" src="static/img/image_not_image.png/">
+            </div>
+          {% endif %}
+            <div class="index_title">
+              <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
+            </div>
+        </div>
+        {% endfor %}
       </div>
-  </div>
-</div>
-{% endfor %}
 {% endblock %}

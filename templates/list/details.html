@@ -3,13 +3,11 @@
 {% block content %}
 
 <div class="wrapper_details">
-   
-   <!-- <div class="gift"> -->
       
       {% if wish.image %}
       <img class="gift_img" src="{{ wish.image.url }}" alt="Фото подарка">
       {% else %}
-      <img src="static/img/image_not_image.png/" alt="Фото подарка">
+      <img src="/static/img/image_not_image.png/" alt="Фото подарка">
       {% endif %}
    <div>   
       <span class="title_details">{{ wish.title }} </span>

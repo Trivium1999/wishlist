@@ -14,6 +14,7 @@
     <div class="header">
       <div class="header_text">{{heading}}</div>
     </div>
+
     <ul class="mainmenu">
       {% block mainmenu %}
           {% for m in menu %}
@@ -21,19 +22,34 @@
               <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
             {% else %}
               <li class="last"><a href="{% url m.url_name %}">{{ m.title }}</a></li>
-              {% endif %}
+            {% endif %}
           {% endfor %}
-          {% endblock mainmenu %}
-      </ul>
+      {% endblock mainmenu %}
+    </ul>
+
       <div class="content">   
       
       {% block content %}
       {% endblock %}
+
       </div>
+          <nav class="list-pages">
+            <ul>
+              {% for p in paginator.page_range %}
+                {% if page_obj.number == p %}
+                  <li class="page-num page-num-selected">{{ p }}</li>
+                {% else %}
+                  <li class="page-num">
+                    <a href="?page={{ p }}">{{ p }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>  
+          </nav>
       </div>
   <div class="footer">
     <p>© {{ 2024 }} Copyright <span style="color:rgb(255, 196, 0)">Wish</span>list</p>
-    <p></p>
+
   </div>
 </div>
 </body>
