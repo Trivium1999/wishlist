@@ -53,11 +53,19 @@ ul.mainmenu li {
     background: #fffd9c;
     border-radius: 20px 20px 20px 20px;
     padding: 5px;
-    color: rgb(34, 18, 3, 0.70);
+    color: rgba(95, 48, 5, 0.7);
+    text-decoration: none;
     font-size: 17px;
     font-family: Comic Sans MS, Geneva, Arial, Helvetica, sans-serif;
-    text-align-last: right;
+    padding-left: 50px;
+    text-align-last: left;
 }
+
+.mainmenu a {
+    text-decoration: none;
+}
+
+ul.mainmenu li.last {float: right; padding: 0 40px 0 0;}
 
 .footer {
     height: 50px;
@@ -119,6 +127,17 @@ ul.mainmenu li {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 5px 5px 20px #fff7aa;
+}
+
+.user_card .user_card__image-wrapper {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+}
+.user_card .user_card__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .index_title {

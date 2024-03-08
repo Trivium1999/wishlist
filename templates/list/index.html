@@ -9,11 +9,11 @@
     {% for w in wishes %}
         <div class="user_card">
           {% if w.image %}
-            <div>
+            <div class="user_card__image-wrapper">
               <img class="index_img" src="{{w.image.url}}">
             </div>
           {% else %}
-            <div>
+            <div class="user_card__image-wrapper">
               <img class="index_img" src="static/img/image_not_image.png/">
             </div>
           {% endif %}

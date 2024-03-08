@@ -1,11 +1,12 @@
 menu = [
     {'title': 'Главная страница', 'url_name': 'wishlist:index'},
     {'title': 'Добавить желание', 'url_name': 'wishlist:create'},
-    {'title': 'О сайте', 'url_name': 'wishlist:about'},
-    {'title': 'Войти', 'url_name': 'wishlist:login'}
+    {'title': 'О сайте', 'url_name': 'wishlist:about'}
 ]
 
 class DataMixin:
+    paginate_by = 6
+
     def get_user_context(self, **kwargs):
         context = kwargs
         user_menu = menu.copy()

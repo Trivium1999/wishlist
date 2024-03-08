@@ -18,14 +18,20 @@
     <ul class="mainmenu">
       {% block mainmenu %}
           {% for m in menu %}
-            {% if not forloop.last %}
               <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
-            {% else %}
-              <li class="last"><a href="{% url m.url_name %}">{{ m.title }}</a></li>
-            {% endif %}
           {% endfor %}
-      {% endblock mainmenu %}
-    </ul>
+
+          {% if request.user.is_authenticated %}
+            <li class="last">{{user.username}} | <a href="{% url 'wishlist:logout' %}">Выйти</a></li>
+
+          {% else %}
+            <li class="last">
+            <a href="{% url 'wishlist:register' %}">Регистрация</a> | <a href="{% url 'wishlist:login' %}">Войти</a>
+            </li>
+          {% endif %}
+        {% endblock mainmenu %}
+          </ul>
+            <div class="clear"></div>
 
       <div class="content">   
       
@@ -33,19 +39,36 @@
       {% endblock %}
 
       </div>
+  {% if page_obj.has_other_pages %}
           <nav class="list-pages">
             <ul>
+
+      {% if page_obj.has_previous %}
+        <li class="page-num">
+          <a href="?page={{ page_obj.previous_page_number }}">&lt;&lt;</a>
+        </li>
+      {% endif %}
+
+
               {% for p in paginator.page_range %}
                 {% if page_obj.number == p %}
                   <li class="page-num page-num-selected">{{ p }}</li>
-                {% else %}
+                {% elif p >= page_obj.number|add:-3 and p <= page_obj.number|add:3 %}
                   <li class="page-num">
                     <a href="?page={{ p }}">{{ p }}</a>
                   </li>
                 {% endif %}
               {% endfor %}
+      
+      {% if page_obj.has_next %}
+        <li class="page-num">
+          <a href="?page={{ page_obj.next_page_number }}">&gt;&gt;</a>
+        </li>
+      {% endif %}
+
             </ul>  
           </nav>
+  {% endif %}
       </div>
   <div class="footer">
     <p>© {{ 2024 }} Copyright <span style="color:rgb(255, 196, 0)">Wish</span>list</p>
