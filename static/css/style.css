@@ -81,8 +81,6 @@ ul.mainmenu li.last {float: right; padding: 0 40px 0 0;}
     text-align: center;
 }
 
-
-
 .title_details {
     margin-left: 50px;
     margin-bottom: 15px;
@@ -112,6 +110,18 @@ ul.mainmenu li.last {float: right; padding: 0 40px 0 0;}
     grid-template-columns: 300px auto;
     grid-gap: 15px;
     padding-top: 10px;
+}
+
+.wrapper_details .user_card__image-wrapper {
+    width: 350px;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.wrapper_details .user_card__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .gift_description {
@@ -180,7 +190,7 @@ ul.mainmenu li.last {float: right; padding: 0 40px 0 0;}
 	margin: 0 20px 0 0;
 }
 
-.list-page a {
+.list-pages a {
     text-decoration: None;
 }
 

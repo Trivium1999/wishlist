@@ -5,9 +5,13 @@
 <div class="wrapper_details">
       
       {% if wish.image %}
-      <img class="gift_img" src="{{ wish.image.url }}" alt="Фото подарка">
+      <div class="user_card__image-wrapper">
+      <img class="index_img" src="{{ wish.image.url }}" alt="Фото подарка">
+      </div>
       {% else %}
+      <div class="user_card__image-wrapper">
       <img src="/static/img/image_not_image.png/" alt="Фото подарка">
+      </div>
       {% endif %}
    <div>   
       <span class="title_details">{{ wish.title }} </span>
