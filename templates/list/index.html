@@ -18,7 +18,7 @@
             </div>
           {% endif %}
             <div class="index_title">
-              <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
+              <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.pk %}">{{w.title}}</a>
             </div>
         </div>
         {% endfor %}

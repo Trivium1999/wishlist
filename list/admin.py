@@ -9,5 +9,4 @@ class WishAdmin(admin.ModelAdmin):
     list_display_links = ('title',)
     search_fields = ('title',)
     list_editable = ('gift',)
-    prepopulated_fields = {"slug": ("title",)}
     empty_value_display = '-пусто-'

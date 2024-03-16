@@ -9,7 +9,7 @@ from .models import Wish
 class CreateWishForm(forms.ModelForm):
     class Meta:
         model = Wish
-        fields = ['title', 'slug', 'description', 'image']
+        fields = ['title', 'description', 'image']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
             'description': forms.Textarea(attrs={'cols': 60, 'rows': 10})

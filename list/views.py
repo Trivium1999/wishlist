@@ -31,7 +31,7 @@ class WishIndex(DataMixin, ListView):
 class DetailWish(DataMixin, DetailView):
     model = Wish
     template_name = 'list/details.html'
-    slug_url_kwarg = 'wish_slug'
+    pk_url_kwarg = 'pk'
     context_object_name = 'wish'
 
     def get_context_data(self, *, object_list=None, **kwargs):
