@@ -1,5 +1,5 @@
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,6 +15,7 @@ SECRET_KEY = 'django-insecure-ip6x4(9cb5o*oe+!#k3ew=)m=84x4!z(g%rmnk*75^u4mg1a_t
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
+INTERNAL_IPS = ["127.0.0.1",]
 
 
 # Application definition
@@ -30,8 +31,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'list.apps.ListConfig',
     'core.apps.CoreConfig',
+    'users.apps.UsersConfig',
     # 'templatetags',
-    # 'users.apps.UsersConfig',
     # 'django.contrib.staticfiles'
 ]
 
@@ -127,6 +128,11 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'wishlist:index'
+LOGOUT_REDIRECT_URL = 'wishlist:index'
+LOGIN_URL = 'users:login'
 
-INTERNAL_IPS = ["127.0.0.1",]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.EmailAuthBackend',
+]

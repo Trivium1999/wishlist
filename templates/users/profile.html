@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title_details">Профиль</h1>
+
+<div class="wrapper_create_wish">
+<form method="post">
+    {% csrf_token %}
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}:</label>
+        <br>{{ form.username }}</p>
+    <div class="form-error">{{ form.username.errors }}</div>
+
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+        <br>{{ form.email }}</p>
+    <div class="form-error">{{ form.email.errors }}</div>
+
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}:</label>
+        <br>{{ form.first_name }}</p>
+    <div class="form-error">{{ form.first_name.errors }}</div>
+
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}:</label>
+        <br>{{ form.last_name }}</p>
+    <div class="form-error">{{ form.last_name.errors }}</div>
+
+    <br>
+    <button type="submit">Сохранить</button>
+</form>
+<p class="create_wish">
+    <p><a href="{% url 'users:password_change' %}">Сменить пароль</a></p>
+</p>
+</div>
+{% endblock %}

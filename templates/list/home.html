@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load my_custom_tags %}
+
+{% block content %}
+ <!-- get_wishes as wishes  -->
+
+
+<div class="index_user">
+    {% for w in wishes %}
+        <div class="user_card">
+          {% if w.image %}
+            <div class="user_card__image-wrapper">
+              <img class="index_img" src="{{w.image.url}}">
+            </div>
+          {% else %}
+            <div class="user_card__image-wrapper">
+              <img class="index_img" src="static/img/image_not_image.png/">
+            </div>
+          {% endif %}
+            <div class="index_title">
+              <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.slug %}">{{w.title}}</a>
+              <p>{{w.author.first_name}} {{w.author.last_name}}</p>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+{% endblock %}

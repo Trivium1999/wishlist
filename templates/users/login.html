@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title_details">{{title}}</h1>
+
+<div class="wrapper_create_wish">
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{next}}" />
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}:</label>
+        <br>{{ form.username }}</p>
+    <div class="form-error">{{ form.username.errors }}</div>
+
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.password.id_for_label }}">{{ form.password.label }}:</label>
+        <br>{{ form.password }}</p>
+    <div class="form-error">{{ form.password.errors }}</div>
+
+    <br>
+    <button type="submit">Войти</button>
+</form>
+</div>
+{% endblock %}

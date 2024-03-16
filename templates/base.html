@@ -22,11 +22,11 @@
           {% endfor %}
 
           {% if request.user.is_authenticated %}
-            <li class="last">{{user.username}} | <a href="{% url 'wishlist:logout' %}">Выйти</a></li>
+            <li class="last"><a href="{% url 'users:profile' %}">{{user.first_name}} {{user.last_name}}</a> | <a href="{% url 'users:logout' %}">Выйти</a></li>
 
           {% else %}
             <li class="last">
-            <a href="{% url 'wishlist:register' %}">Регистрация</a> | <a href="{% url 'wishlist:login' %}">Войти</a>
+            <a href="{% url 'users:register' %}">Регистрация</a> | <a href="{% url 'users:login' %}">Войти</a>
             </li>
           {% endif %}
         {% endblock mainmenu %}
@@ -71,7 +71,7 @@
   {% endif %}
       </div>
   <div class="footer">
-    <p>© {{ 2024 }} Copyright <span style="color:rgb(255, 196, 0)">Wish</span>list</p>
+    <p>© {{ 2024 }} Copyright <span style="color:rgb(255, 196, 0)">Wish</a></span>list</p>
 
   </div>
 </div>

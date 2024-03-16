@@ -1,14 +1,17 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 User = get_user_model()
 
 
 class Wish(models.Model):
-    # author = models.ForeignKey(
-    #     User,
-    #     on_delete=models.CASCADE,
-    #     )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='author',
+        verbose_name='Автор'
+        )
     title = models.CharField('Название', blank=False, max_length=150)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     image = models.ImageField('Фото', upload_to='image/', blank=True)

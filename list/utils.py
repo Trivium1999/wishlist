@@ -4,6 +4,7 @@ menu = [
     {'title': 'О сайте', 'url_name': 'wishlist:about'}
 ]
 
+
 class DataMixin:
     paginate_by = 9
 
