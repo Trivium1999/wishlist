@@ -3,12 +3,13 @@ from .views import (WishIndex,
                     DetailWish,
                     CreateWish,
                     about,
-                    UpdateWish)
+                    UpdateWish,
+                    WishHome)
 
 app_name = 'list'
 
 urlpatterns = [
-    path('', WishIndex.as_view(), name='index'), # отображаются пользователи, с фото и именами
+    path('', WishHome.as_view(), name='index'), # отображаются пользователи, с фото и именами
     path('about/', about, name='about'), # о проекте
     path('create/', CreateWish.as_view(), name='create'),
     path('edit/<int:pk>/', UpdateWish.as_view(), name='edit_wish'),

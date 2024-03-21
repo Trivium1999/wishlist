@@ -1,13 +1,36 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <h1 class="title_details">Профиль</h1>
 
 <div class="wrapper_create_wish">
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-error">{{ form.non_field_errors }}</div>
+
+    <div class="user_card">
+    {% if user.photo %}
+    <div class="user_card__image-wrapper">
+        <img class="index_img" src="{{ user.photo.url }}">
+    </div>
+    {% else %}
+    <div class="user_card__image-wrapper">
+        <img class="index_img" src="/media/users/default.png/">
+    </div>
+    {% endif %}
+    </div>
+
+
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.photo.id_for_label }}">{{ form.photo.label }}:</label>
+        <br>{{ form.photo }}</p>
+    <div class="form-error">{{ form.photo.errors }}</div>
     
+    <p class="create_wish">
+        <label class="form-label" for="{{ form.date_birth.id_for_label }}">{{ form.date_birth.label }}:</label>
+        <br>{{ form.date_birth }}</p>
+    <div class="form-error">{{ form.date_birth.errors }}</div>
+
     <p class="create_wish">
         <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}:</label>
         <br>{{ form.username }}</p>

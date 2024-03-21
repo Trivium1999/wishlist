@@ -1,3 +1,4 @@
+import list.views as views
 from django import template
 from ..models import Wish
 
