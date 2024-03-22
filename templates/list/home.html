@@ -10,16 +10,18 @@
         <div class="user_card">
           {% if user.photo %}
             <div class="user_card__image-wrapper">
-              <img class="index_img" src="{{user.photo.url}}">
+              <a class="index_title_btn" href="{% url 'list:all_wish' user.id %}">
+                <img class="index_img" src="{{user.photo.url}}"></a>
             </div>
           {% else %}
             <div class="user_card__image-wrapper">
-              <img class="index_img" src="/media/users/default.png/">
+              <a class="index_title_btn" href="{% url 'list:all_wish' user.id %}">
+                <img class="index_img" src="/media/users/default.png/"></a>
             </div>
           {% endif %}
             <div class="index_title">
-              <a class="index_title_btn" href="{% url 'users:all_wish' user.pk %}"></a>
-              <p>{{user.first_name}} {{user.last_name}}</p>
+              <a class="index_title_btn" href="{% url 'list:all_wish' user.id %}">{{user.first_name}} {{user.last_name}}</a>
+              <p>{{user.date_birth|date:'d.m'}}</p>
             </div>
         </div>
         {% endfor %}

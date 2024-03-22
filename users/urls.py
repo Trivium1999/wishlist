@@ -15,8 +15,7 @@ from .views import (RegisterUser,
 app_name = 'users'
 
 urlpatterns = [
-    path('person/<slug:person_id>/', person, name='person'),  # страница пользователя со списком подарков
-    # path('users/', users, name='users'), # все пользователи, с фото и именами
+    path('person/<slug:person_id>/', person, name='person'),
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', RegisterUser.as_view(), name='register'),

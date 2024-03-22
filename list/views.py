@@ -11,7 +11,7 @@ from .models import *
 from .utils import *
 
 
-class WishHome(DataMixin, ListView):
+class WishIndex(DataMixin, ListView):
     model = get_user_model()
     template_name = 'list/home.html'
     context_object_name = 'users'
@@ -25,7 +25,7 @@ class WishHome(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class WishIndex(DataMixin, ListView):
+class WishesOneUser(DataMixin, ListView):
     model = Wish
     template_name = 'list/index.html'
     context_object_name = 'wishes'
@@ -33,13 +33,13 @@ class WishIndex(DataMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(
-            title='Главная страница',
+            title='Список желаний',
             heading='Список Желаний'
         )
         return dict(list(context.items()) + list(c_def.items()))
     
     def get_queryset(self):
-        return Wish.objects.filter(gift=False)
+        return Wish.objects.filter(author_id=self.kwargs['author_id'])
 
 
 class DetailWish(DataMixin, DetailView):
