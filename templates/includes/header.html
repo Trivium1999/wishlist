@@ -1,0 +1,19 @@
+<ul class="mainmenu">
+
+
+    {% block mainmenu %}
+            <li><a href="{% url 'wishlist:index' %}">Главная страница</a></li>
+            <li><a href="{% url 'wishlist:create' %}">Добавить желание</a></li>
+            <li><a href="{% url 'wishlist:about' %}">О сайте</a></li>
+
+        {% if request.user.is_authenticated %}
+          <li class="last"><a href="{% url 'users:profile' %}">{{user.first_name}} {{user.last_name}}</a> | <a href="{% url 'users:logout' %}">Выйти</a></li>
+
+        {% else %}
+          <li class="last">
+          <a href="{% url 'users:register' %}">Регистрация</a> | <a href="{% url 'users:login' %}">Войти</a>
+          </li>
+        {% endif %}
+      {% endblock mainmenu %}
+        </ul>
+          <div class="clear"></div>

@@ -15,23 +15,7 @@
       <div class="header_text">{{heading}}</div>
     </div>
 
-    <ul class="mainmenu">
-      {% block mainmenu %}
-          {% for m in menu %}
-              <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
-          {% endfor %}
-
-          {% if request.user.is_authenticated %}
-            <li class="last"><a href="{% url 'users:profile' %}">{{user.first_name}} {{user.last_name}}</a> | <a href="{% url 'users:logout' %}">Выйти</a></li>
-
-          {% else %}
-            <li class="last">
-            <a href="{% url 'users:register' %}">Регистрация</a> | <a href="{% url 'users:login' %}">Войти</a>
-            </li>
-          {% endif %}
-        {% endblock mainmenu %}
-          </ul>
-            <div class="clear"></div>
+    {% include 'includes/header.html' %}
 
       <div class="content">   
       
