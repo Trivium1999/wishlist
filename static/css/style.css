@@ -239,3 +239,22 @@ ul.mainmenu li.last {float: right; padding: 0 40px 0 0;}
 .detail_update_delete_btn:hover {
     background-color: #fffd9c;
 }
+
+.create-update-delete {
+    text-align: center;
+    text-align-last: left;
+}
+
+.create-update-delete-btn {
+    background-color: #fffd9c;
+    padding: 3px 3px;
+    text-decoration: None;
+    font-size: 14px;
+    font-family: Comic Sans MS, Tahoma, Arial;
+    color: #70511b;
+    border-radius: 5px;
+}
+
+.create-update-delete-btn:hover {
+    background-color: #fffd9c;
+}
