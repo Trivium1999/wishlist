@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import logout, login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,28 +15,20 @@ class WishIndex(DataMixin, ListView):
     model = get_user_model()
     template_name = 'list/home.html'
     context_object_name = 'users'
-
-    def get_context_data(self, *, object_list=None, **kwargs):  
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(
-            title='Главная страница',
-            heading='Список Пользователей'
-        )
-        return dict(list(context.items()) + list(c_def.items()))
+    extra_context = {
+        'title': 'Главная страница',
+        'heading': 'Список Пользователей'
+    }
 
 
-class WishesOneUser(DataMixin, ListView):
+class WishesForUser(DataMixin, ListView):
     model = Wish
     template_name = 'list/index.html'
     context_object_name = 'wishes'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(
-            title='Список желаний',
-            heading='Список Желаний'
-        )
-        return dict(list(context.items()) + list(c_def.items()))
+    extra_context = {
+        'title': 'Список желаний',
+        'heading': 'Список желаний'
+    }
     
     def get_queryset(self):
         return Wish.objects.filter(author_id=self.kwargs['author_id'])
@@ -58,14 +50,10 @@ class CreateWish(LoginRequiredMixin, DataMixin, CreateView):
     form_class = CreateWishForm
     template_name = 'list/create.html'
     success_url = reverse_lazy('wishlist:index')
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(
-            title='Добавить желание',
-            heading='Добавить желание'
-        )
-        return dict(list(context.items()) + list(c_def.items()))
+    extra_context = {
+        'title': 'Добавить желание',
+        'heading': 'Добавить желание'
+    }
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -76,19 +64,25 @@ class UpdateWish(DataMixin, UpdateView):
     model = Wish
     fields = ['title', 'image', 'description']
     template_name = 'list/create.html'
+    pk_url_kwarg = 'wish_pk'
     success_url = reverse_lazy('wishlist:index')
     extra_context = {
-            'title': 'Редактирование желания',
-            'heading': 'Редактирование желания'
+        'is_edit': True,
+        'title': 'Редактирование желания',
+        'heading': 'Редактирование желания'
     }
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(
-            title='Редактирование желания',
-            heading='Редактирование желания'
-        )
-        return dict(list(context.items()) + list(c_def.items()))
+
+class DeleteWish(DataMixin, DeleteView):
+    model = Wish
+    success_url = reverse_lazy('wishlist:index')
+    context_object_name = 'wish'
+    pk_url_kwarg = 'wish_pk'
+    template_name = 'list/delete.html'
+    extra_context = {
+            'title': 'Удаление',
+            'heading': 'Удаление'
+    }
 
 
 @login_required

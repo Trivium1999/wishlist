@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="title_details" align="middle">Удаление</div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="gift_description" align="middle">Удалить "{{ wish.title }}"?
+      <p><input type="submit" value="Удалить" /></p></div>
+    </form>
+{% endblock content %}

@@ -219,3 +219,23 @@ ul.mainmenu li.last {float: right; padding: 0 40px 0 0;}
 .list-pages .page-num-selected:hover {
 	box-shadow: none; 
 }
+
+
+.detail_update_delete {
+    text-align: center;
+    text-align-last: left;
+}
+
+.detail_update_delete_btn {
+    background-color: #fffd9c;
+    padding: 10px 10px;
+    text-decoration: None;
+    font-size: 18px;
+    font-family: Comic Sans MS, Tahoma, Arial;
+    color: #70511b;
+    border-radius: 5px;
+}
+
+.detail_update_delete_btn:hover {
+    background-color: #fffd9c;
+}

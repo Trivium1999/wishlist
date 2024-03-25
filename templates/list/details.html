@@ -16,8 +16,13 @@
    <div>   
       <span class="title_details">{{ wish.title }} </span>
       <p class="gift_description">{{ wish.description }}</p>
-
    </div>      
+   {% if wish.author == request.user %}
+   <div class="detail_update_delete">
+      <a class="detail_update_delete_btn" href="{% url 'list:edit_wish' wish.pk %}">Редактировать</a>
+      <a class="detail_update_delete_btn" href="{% url 'list:delete_wish'  wish.pk %}">Удалить</a>
+    </div>
+   {% endif %}
 
       
    </div>
