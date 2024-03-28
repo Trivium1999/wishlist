@@ -18,8 +18,6 @@ ALLOWED_HOSTS = ['127.0.0.1']
 INTERNAL_IPS = ["127.0.0.1",]
 
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,8 +30,6 @@ INSTALLED_APPS = [
     'list.apps.ListConfig',
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
-    # 'templatetags',
-    # 'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [

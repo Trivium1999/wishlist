@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from .forms import CreateWishForm
 from .models import *
 from .utils import *
@@ -60,12 +61,13 @@ class CreateWish(LoginRequiredMixin, DataMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateWish(DataMixin, UpdateView):
+class UpdateWish(AuthorRequiredMixin, SuccessMessageMixin, DataMixin, UpdateView):
     model = Wish
     fields = ['title', 'image', 'description']
     template_name = 'list/create.html'
     pk_url_kwarg = 'wish_pk'
     success_url = reverse_lazy('wishlist:index')
+    success_message = 'Желание было успешно обновлено'
     extra_context = {
         'is_edit': True,
         'title': 'Редактирование желания',
@@ -73,7 +75,7 @@ class UpdateWish(DataMixin, UpdateView):
     }
 
 
-class DeleteWish(DataMixin, DeleteView):
+class DeleteWish(AuthorRequiredMixin, DataMixin, DeleteView):
     model = Wish
     success_url = reverse_lazy('wishlist:index')
     context_object_name = 'wish'

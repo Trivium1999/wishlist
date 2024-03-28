@@ -5,6 +5,8 @@
     <form method="post">
       {% csrf_token %}
       <div class="gift_description" align="middle">Удалить "{{ wish.title }}"?
+        <br>
+        <br>
           <p><input class="create-update-delete-btn" type="submit" value="Удалить" /></p></div>
     </form>
 {% endblock content %}
