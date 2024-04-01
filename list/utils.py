@@ -22,7 +22,6 @@ class DataMixin:
         return context
 
 
-
 class AuthorRequiredMixin(AccessMixin):
 
     def dispatch(self, request, *args, **kwargs):

@@ -10,11 +10,13 @@
         <div class="user_card">
           {% if w.image %}
             <div class="user_card__image-wrapper">
-              <img class="index_img" src="{{w.image.url}}">
+              <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.pk %}">
+              <img class="index_img" src="{{w.image.url}}"></a>
             </div>
           {% else %}
             <div class="user_card__image-wrapper">
-              <img class="index_img" src="static/img/image_not_image.png/">
+              <a class="index_title_btn" href="{% url 'wishlist:details_wish' w.pk %}">
+              <img class="index_img" src="/static/img/image_not_image.png/"></a>
             </div>
           {% endif %}
             <div class="index_title">

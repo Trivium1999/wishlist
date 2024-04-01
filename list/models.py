@@ -12,7 +12,6 @@ class Wish(models.Model):
         verbose_name='Автор'
         )
     title = models.CharField('Название', blank=False, max_length=150)
-    # slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     image = models.ImageField('Фото', upload_to='image/', blank=True)
     description = models.TextField('Описание', blank=False)
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)

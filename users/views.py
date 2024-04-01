@@ -1,13 +1,12 @@
-from django.shortcuts import redirect
-from django.contrib.auth import logout, login, get_user_model
+from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-# from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RegisterUserForm, LoginUserForm, ProfileUserForm, UserPasswordChangeForm
+
 from list.utils import *
+from .forms import RegisterUserForm, LoginUserForm, ProfileUserForm, UserPasswordChangeForm
 
 
 def person(request, person_id):

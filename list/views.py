@@ -1,12 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth import logout, login, get_user_model
+from django.shortcuts import render
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+
 from .forms import CreateWishForm
 from .models import *
 from .utils import *
@@ -47,10 +46,11 @@ class DetailWish(DataMixin, DetailView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class CreateWish(LoginRequiredMixin, DataMixin, CreateView):
+class CreateWish(LoginRequiredMixin, SuccessMessageMixin, DataMixin, CreateView):
     form_class = CreateWishForm
     template_name = 'list/create.html'
     success_url = reverse_lazy('wishlist:index')
+    success_message = 'Желание было успешно добавлено'
     extra_context = {
         'title': 'Добавить желание',
         'heading': 'Добавить желание'

@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path, include
 from wishlist import settings
-# from core.views import page_not_found, server_error, permission_denied
 
 
 handler404 = 'core.views.page_not_found'
