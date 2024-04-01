@@ -23,11 +23,6 @@ class RegisterUser(DataMixin, CreateView):
         c_def = self.get_user_context(title="Регистрация")
         return dict(list(context.items()) + list(c_def.items()))
 
-    # def form_valid(self, form):
-    #     user = form.save()
-    #     login(self.request, user)
-    #     return redirect('wishlist:index')
-
 
 class LoginUser(DataMixin, LoginView):
     form_class = LoginUserForm
